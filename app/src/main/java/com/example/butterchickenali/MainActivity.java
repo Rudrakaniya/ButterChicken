@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         final RatingBar ratingBar = findViewById(R.id.rating_bar);
         Button ratingButton = findViewById(R.id.rating_button);
 
+        Log.d(TAG, "onCreate: ");
 
         ratingButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,18 +36,43 @@ public class MainActivity extends AppCompatActivity {
 
                 Float rVlaue = Float.parseFloat(value);
                 Log.d(TAG, "onClick: " + rVlaue);
+                //rVlaue /= 1.0F;
 
                 if ( rVlaue > 5.0 ){
                     Toast.makeText(MainActivity.this, "Enter valid value", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                ratingText.setText(value.substring(0,3));
+                ratingText.setText(value);
                 ratingBar.setRating(rVlaue);
             }
         });
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(TAG, "onStart: ");
+    }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d(TAG, "onRestart: ");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop: ");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy: ");
+    }
+
+    
 }
